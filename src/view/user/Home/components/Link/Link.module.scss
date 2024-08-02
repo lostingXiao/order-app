@@ -1,0 +1,15 @@
+.item{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img{
+    width: 80px;
+  }
+  span{
+    margin-top: 10px;
+    color: var(--adm-color-orange);
+    // font-weight: bold;
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,29 @@
+
+.scaleContent {
+  margin-top: 80px;
+  height: 680px;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  user-select: none;
+  border-radius: 20px;
+  overflow: hidden;
+  .img{
+    height: 100%;
+  }
+}
+
+.root {
+  :global {
+    .adm-swiper-slide {
+      transform: scale(0.6);
+      transition: all 0.3s;
+    }
+
+    .adm-swiper-slide-active {
+      transform: scale(1);
+    }
+  }
+}

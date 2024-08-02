@@ -1,0 +1,10 @@
+.container{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--adm-font-size-10);
+  background-color: var(--adm-color-primary);
+  color: var(    --adm-color-text-light-solid);
+  font-weight: bold;
+}

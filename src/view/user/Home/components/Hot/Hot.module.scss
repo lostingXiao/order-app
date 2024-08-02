@@ -1,0 +1,32 @@
+.container{
+  border-radius: 10px;
+  box-shadow: 0 0 50px var(--adm-color-weak);
+  overflow: hidden;
+  .title{
+    height: 60px;
+    line-height: 60px;
+    font-size: 28px;
+    padding: 10px 20px;
+    color: var(--adm-color-orange);
+    font-weight: bold;
+    text-align: left;
+  }
+  .content{
+    padding: 0 20px 20px;    
+    .item{
+      display: flex;
+      .tips{
+        flex: 1;
+        border: 1px solid var(--adm-color-orange);
+        background-color: var(--adm-color-orange);
+        color: var(--adm-color-white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      img{
+        height: 120px;
+      }
+    }
+  }
+}

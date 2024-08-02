@@ -1,0 +1,37 @@
+.container{
+  height: 100vh;
+  background-color: var(--adm-color-white);
+  position: relative;
+  overflow: hidden;  
+  .containerBg{
+    width: 120vw;
+    height: 40%;
+    border-radius: 0 0 50% 50%;
+    background-color: var(--adm-color-primary);
+    position: absolute;
+    z-index: 0;
+    left: -10%;
+    background-image: url('../../../static/images/351721786408_.jpg');
+    background-size: 100%;
+    background-position: center;
+  }
+  .content{
+    position: relative;
+    z-index: 1;
+    padding: 70% 40px;
+    box-sizing: border-box;
+    .form{
+      padding: 10px;
+      background-color: var(--adm-color-white);
+      border-radius: 20px;
+      box-shadow: 0 0 10px var(--adm-color-weak);
+    }
+  }
+  .footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0 30px;
+    box-sizing: border-box;
+  }
+}

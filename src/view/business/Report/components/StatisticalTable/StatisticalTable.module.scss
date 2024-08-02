@@ -1,0 +1,38 @@
+.container{
+  height: 100%;
+  overflow: auto;
+  .card{
+    margin-top: 10px;
+    background-color: var(--adm-color-white);
+  }
+  .turnover{
+    height: 240px;
+    .data{
+      margin: 10px;
+      text-align: center;
+      .title{
+        color: var(--adm-color-text-secondary);
+        font-size: 26px;
+      }
+    }
+  }
+  .rank{
+    height: calc(100% - 260px );
+  }
+  .header{
+    height: 60px;
+    line-height: 60px;
+    font-size: 26px;
+    color: var(--adm-color-weak);
+    padding: 0 12px;
+  }
+  .list{
+    height: calc(100% - 60px );
+    overflow: auto;
+    background-color: var(--adm-color-white);
+  }
+  .footer{
+    background-color: var(--adm-color-box);
+    padding: 0 12px;
+  }
+}

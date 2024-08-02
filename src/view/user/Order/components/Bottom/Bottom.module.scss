@@ -1,0 +1,27 @@
+.box{
+  width: 90%;
+  height: 80px;
+  line-height: 80px;
+  margin: auto;
+  display: flex;
+  .left{
+    border-right: none;
+    flex: 1;
+    background-color: var(--adm-color-text-light-solid);
+    border-radius: 40px 0 0 40px;
+    padding: 0 20px;
+  }
+  
+  .right{
+    border-left: none;
+    width: 140px;
+    background-color: var(--adm-color-primary);
+    border-radius: 0 40px 40px 0;
+    color: var(--adm-color-text-light-solid);
+    font-size: 28px;
+    padding: 0 10px;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+

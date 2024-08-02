@@ -1,0 +1,48 @@
+.contaier{
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  [data-prefers-color='dark'] & {
+    background-color: unset;
+  }
+  .side {
+    flex: none;
+  }
+  .main {
+    flex: auto;
+    height: 100%;
+    .content{
+      height: calc(100% - 82px);
+      overflow: auto;
+      box-sizing: border-box;
+      .item{
+        background-color: var(--adm-color-box);
+      }
+      .itemHanlde{
+        text-align: right;
+        padding: 20px;
+        background-color: var(--adm-color-box);
+        border-top: var(--border-inner);
+      }
+    }
+    .bottom{
+      height: 80px;
+      .orderMsg{
+        padding: 0 20px;
+        color: var(--adm-color-primary);
+        line-height: 80px;
+        font-size: var(--adm-font-size-9);
+        background-color: var(--adm-color-primary-bg);
+        color: var(--adm-color-primary);
+        span{
+          font-size: var(--adm-font-size-10);
+          font-weight: bold;
+        }
+      }
+      .handle{
+        height: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.container{
+  height: 100%;
+  overflow: auto;
+  .item{
+    padding-right: 40px;
+    .itemExtraText{
+      margin-right: 10px;
+    }
+  }
+}

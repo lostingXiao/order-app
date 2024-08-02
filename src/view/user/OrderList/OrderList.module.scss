@@ -1,0 +1,15 @@
+.container{
+  height: 100%;
+  
+  position: relative;
+  .content{
+    overflow: auto;
+    height: calc(100% - 100px);
+  }
+  .bottom{
+    position: absolute;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+  }
+}
