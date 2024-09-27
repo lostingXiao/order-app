@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function Bottom() {
   const navigate = useNavigate()
   const goOrderList=()=>{
-    navigate('/user/orderList')
+    navigate('/orderList')
   }
   return (
     <div className={style.box}>

@@ -1,4 +1,5 @@
 import React from 'react'
+import style from './style.module.scss' 
 import { TabBar } from 'antd-mobile'
 import { useNavigate, useLocation } from 'react-router-dom'
 import {
@@ -10,9 +11,9 @@ import {
 
 export default function Bottom() {
   const tabs=[
-    { key: '/user/home',title: '首页',icon: <AppOutline /> },
+    { key: '/user/home',title: '首页',icon: <AppOutline className={style.icon} /> },
     // { key: '/user/order',title: '点单',icon: <AppOutline /> },
-    { key: '/user/orderList',title: '订单',icon: <AppOutline /> }
+    { key: '/orderList',title: '订单',icon: <UnorderedListOutline className={style.icon} /> }
   ]
   const pathname = useLocation().pathname
   const navigate = useNavigate()
@@ -21,7 +22,7 @@ export default function Bottom() {
     navigate(value)
   }
   return (
-    <TabBar activeKey={pathname} onChange={value => setRouteActive(value)}>
+    <TabBar className={style.bar} activeKey={pathname} onChange={value => setRouteActive(value)}>
       {tabs.map(item => (
         <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
       ))}

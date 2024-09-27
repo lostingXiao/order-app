@@ -12,19 +12,19 @@ import Report from '../view/business/Report/Report'
 const router = createHashRouter([
   {
     path: '/user',
-    element: <User/>,
+    element: <User />,
     children: [
       {
         path: 'home',
         title:'首页',
         element: <Home/>
       },
-      {
-        path: 'orderList',
-        title:'订单',
-        element: <OrderList/>
-      },
     ]
+  },
+  {
+    path: 'orderList',
+    title:'订单',
+    element: <OrderList/>
   },
   {
     path: 'order',
@@ -33,30 +33,33 @@ const router = createHashRouter([
   },
   {
     path: 'statement',
-    title:'点餐',
+    title:'结算',
     element: <Statement/>
   },
   {
-    path: 'login',
-    title:'商家登录',
-    element: <Login/>
-  },
-  {
-    path: 'make',
-    title:'订单制作',
-    element: <Make/>
-  },
-  {
-    path: 'report',
-    title:'订单制作',
-    element: <Report/>
+    path: '/business',
+    children: [
+      {
+        path: 'login',
+        title:'商家登录',
+        element: <Login/>
+      },
+      {
+        path: 'make',
+        title:'订单制作',
+        element: <Make/>
+      },
+      {
+        path: 'report',
+        title:'订单制作',
+        element: <Report/>
+      },
+    ]
   },
   {
     path: '/',
-    element: <Navigate to="/order"/>
+    element: <Navigate to="/user/home"/>
   }
-
-  
 ])
 
 export default router

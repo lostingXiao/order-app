@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './Home.module.scss'
+import style from './style.module.scss'
 import Banner from './components/Banner/Banner'
 import Hot from './components/Hot/Hot'
 import Link from './components/Link/Link';
@@ -46,9 +46,9 @@ export default function Home() {
           <div className={style.link}>
             <Link data={linkItems}></Link>
           </div>
-          {/* <div className={style.link}>
+          <div className={style.link}>
             <Link data={linkItems}></Link>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

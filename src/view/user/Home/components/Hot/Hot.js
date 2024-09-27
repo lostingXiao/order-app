@@ -25,11 +25,11 @@ export default function Hot(props) {
       <Grid columns={2} className={style.content}>
         {props.data.map((item,index)=>{
           if(index<2){
-            return ( <ImgPre item={item} /> )
+            return ( <ImgPre key={index} item={item} /> )
           }else if(index>=2&&index<4){
-            return ( <TipsPre item={item} />)
+            return ( <TipsPre key={index} item={item} />)
           }else{
-            return ( <ImgPre item={item} /> )
+            return ( <ImgPre key={index} item={item} /> )
           }
         })}
       </Grid>

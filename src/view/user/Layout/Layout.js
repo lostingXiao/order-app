@@ -3,6 +3,11 @@ import { Outlet } from 'react-router-dom'
 import Bottom from './components/Bottom/Bottom';
 
 function Layout() {
+
+
+  console.log('Layout')
+  console.log('-------------')
+
   return (
     <div className={style.layout}>
       <div className={style.content}>

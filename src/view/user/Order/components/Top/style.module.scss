@@ -5,11 +5,18 @@
 }
 .search{
   display: flex;
-  margin-bottom: 10px;
+  align-items: center;
+  height: 70px;
 }
 .bar{
   flex: 1;
+  --height:32px;
+  font-size: 16px;
 }
 .away{
+  --height:52px;
   margin-left: 10px;
+}
+.notice{
+  --height: 60px;
 }

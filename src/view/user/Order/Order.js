@@ -1,10 +1,11 @@
-import React from 'react'
-import style from './Order.module.scss'
+import React, { useEffect } from 'react'
+import style from './style.module.scss'
 import { lorem } from '@/mock'
 import Side from './components/Side/Side'
 import Main from './components/Main/Main'
 import Top from './components/Top/Top'
 import Bottom from './components/Bottom/Bottom'
+import { useLogin } from '@/hooks/useLogin'
 
 const menus = lorem.map((item,index)=>({
   key: item.key,
@@ -14,6 +15,13 @@ const menus = lorem.map((item,index)=>({
 })) 
 
 export default function Order() {
+  const { login } = useLogin()
+  console.log()
+   
+  useEffect(()=>{
+    login({})
+  })
+
   return (
     <div className={style.container}>
       <div className={style.top}>

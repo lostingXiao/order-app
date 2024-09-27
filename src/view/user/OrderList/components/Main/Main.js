@@ -18,7 +18,6 @@ export default function Main({data}) {
             >
               <List>
                 {items.map((item, index) => {
-                  console.log(item)
                   return <List.Item 
                     key={index} 
                     className={style.item} 

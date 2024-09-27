@@ -5,7 +5,10 @@
   "dependencies": {
     "ahooks": "^3.8.0",
     "antd-mobile": "^5.37.1",
+    "axios": "^1.7.7",
     "cra-template": "1.2.0",
+    "mobx": "^6.13.3",
+    "mobx-react-lite": "^4.0.7",
     "node-sass": "^7.0.3",
     "postcss-px2rem": "^0.3.0",
     "react": "^18.3.1",
