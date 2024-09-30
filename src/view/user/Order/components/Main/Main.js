@@ -1,15 +1,35 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef,useState } from 'react'
+import style from './style.module.scss'
 import { List,Image,Stepper,Footer } from 'antd-mobile'
 import { useThrottleFn } from 'ahooks'
 
-export default function Main(props) {
+import { lorem } from '@/mock'
+
+
+const menus = lorem.map((item,index)=>({
+  goods_type_id: item.goods_type_id,
+  goods_type_name: item.goods_type_name,
+  text:JSON.stringify(item.goodsList()),
+  goodsList:item.goodsList()
+})) 
+
+export default function Main({ items, onScroll }) {
+  const [ itemList, setItemList ] = useState([])
   const mainElementRef = useRef(null)
   const { run: handleScroll } = useThrottleFn(
     () => {
-      for (const item of props.items) {
-        const element = document.getElementById(`anchor-${item.key}`)
+      let currentKey = itemList[0].goods_type_id
+      for (const item of items) {
+        const element = document.getElementById(`anchor-${item.goods_type_id}`)
         if (!element) continue
+        const rect = element.getBoundingClientRect()
+        if (rect.top <= 0) {
+          currentKey = item.goods_type_id
+        } else {
+          break
+        }
       }
+      onScroll(currentKey)
     },
     {
       leading: true,
@@ -18,43 +38,49 @@ export default function Main(props) {
     }
   )
 
-  useEffect(() => {
+  const init = () => {
+    const list = items.length ? items : []
+    setItemList(list)
     const mainElement = mainElementRef.current
     if (!mainElement) return
     mainElement.addEventListener('scroll', handleScroll)
     return () => {
       mainElement.removeEventListener('scroll', handleScroll)
     }
-  }, [])
+  }
+
+
+  useEffect(() => {
+    init()
+  }, [items])
 
   return (
-    <div ref={mainElementRef}>
-      {props.items.map(item => (
-          <List key={item.key} header={
-            <h2 id={`anchor-${item.key}`}>{item.title}</h2>
+    <div key={1} className={style.container} ref={mainElementRef}>
+      {itemList.map(item => (
+          <List key={item.goods_type_id} header={
+            <div className={ style.title } id={`anchor-${item.goods_type_id}`}>{item.goods_type_name}</div>
           }>
-            {item.items.map((obj,idx)=>(
+            {item.goodsList.map((obj,idx)=>(
               <List.Item
-                key={idx}
+                className={ style.item }
+                key={obj.id}
                 description={obj.description}
                 prefix={
                   <Image
-                    src={obj.avatar}
+                    src={obj.img_url}
                     style={{ borderRadius: 2 }}
                     fit='cover'
                     width={40}
                     height={40}
                   />
                 }
-                extra={ <Stepper min={0} digits={0} /> }>
+                extra={ <Stepper className={ style.stepper } min={0} digits={0} step={obj.min_quantity} /> }>
                 {obj.name}
               </List.Item>
             ))}
           </List>
         ))}
-        {/* <DemoBlock title='基础页脚'> */}
         <Footer content='没有更多了'></Footer>
-      {/* </DemoBlock> */}
     </div>
   )
 }

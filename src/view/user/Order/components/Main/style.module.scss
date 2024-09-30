@@ -1,0 +1,14 @@
+.title{
+  font-size: var(--adm-font-size-8);
+}
+.item{
+  font-size: var(--adm-font-size-6);
+}
+.stepper{
+  --height: 50px;
+  --input-width: 80px;
+}
+.container{
+  height: 100%;
+  overflow-y: scroll;
+}

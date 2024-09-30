@@ -10,10 +10,14 @@ export const useLogin = () => {
   const { setSates, clearSates  } = common
 
   const login = async ({ password, username, code }) => {
-    const res = await loginApi({ password, username, code })
-    const { token } = res
-    setSates({token},true)
-    return true
+    try{
+      const res = await loginApi({ password, username, code })
+      const { token } = res
+      setSates({token},true)
+      return true
+    }catch(err){
+      return false
+    }
   }
 
   const loginOut =  () => {

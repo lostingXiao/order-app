@@ -5,6 +5,15 @@ module.exports = {
   // 服务器
   devServer:{
     port: 3001,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5050',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
   },
   // 配置@符号的
   webpack: {
