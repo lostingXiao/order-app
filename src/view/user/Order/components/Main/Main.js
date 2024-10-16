@@ -2,6 +2,8 @@ import React, { useEffect, useRef,useState } from 'react'
 import style from './style.module.scss'
 import { List,Image,Stepper,Footer } from 'antd-mobile'
 import { useThrottleFn } from 'ahooks'
+import ListItem from '../ListItem/ListItem'
+
 
 import { lorem } from '@/mock'
 
@@ -13,7 +15,7 @@ const menus = lorem.map((item,index)=>({
   goodsList:item.goodsList()
 })) 
 
-export default function Main({ items, onScroll, onChange }) {
+export default function Main({ items, onScroll, onChange, selected }) {
 
   const [ selectedList, setSelectedList ] = useState([])
   const [ itemList, setItemList ] = useState([])
@@ -43,6 +45,7 @@ export default function Main({ items, onScroll, onChange }) {
   const init = () => {
     const list = items.length ? items : []
     setItemList(list)
+    setSelectedList(selected)
     const mainElement = mainElementRef.current
     if (!mainElement) return
     mainElement.addEventListener('scroll', handleScroll)
@@ -52,13 +55,18 @@ export default function Main({ items, onScroll, onChange }) {
   }
 
   const stepperChange = (index,idx,v) => {
-    console.log(index,idx,v)
+    const list = itemList
+    list[index].goodsList[idx].quantity=v
+    let goodsList = []
+    list.forEach(item=> goodsList=[...goodsList,...item.goodsList] )
+    const seledList = goodsList.filter(item=>item.quantity)
+    onChange(seledList)
   }
 
 
   useEffect(() => {
     init()
-  }, [items])
+  }, [items,selected])
 
   return (
     <div key={1} className={style.container} ref={mainElementRef}>
@@ -67,22 +75,7 @@ export default function Main({ items, onScroll, onChange }) {
             <div className={ style.title } id={`anchor-${item.goods_type_id}`}>{item.goods_type_name}</div>
           }>
             {item.goodsList.map((obj,idx)=>(
-              <List.Item
-                className={ style.item }
-                key={obj.id}
-                description={obj.description}
-                prefix={
-                  <Image
-                    src={obj.img_url}
-                    style={{ borderRadius: 2 }}
-                    fit='cover'
-                    width={40}
-                    height={40}
-                  />
-                }
-                extra={ <Stepper className={ style.stepper } min={0} digits={0} step={obj.min_quantity} onChange={(v)=>stepperChange(index,idx,v)} /> }>
-                {obj.name}
-              </List.Item>
+              <ListItem key={obj.id} item={obj} onChange={(v)=>stepperChange(index,idx,v)} />
             ))}
           </List>
         ))}

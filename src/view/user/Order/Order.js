@@ -5,9 +5,10 @@ import Side from './components/Side/Side'
 import Main from './components/Main/Main'
 import Top from './components/Top/Top'
 import Bottom from './components/Bottom/Bottom'
+import Selected from './components/Selected/Selected'
 import { useLogin } from '@/hooks/useLogin'
-import { useSearchParams } from 'react-router-dom'
-import { Button, List } from 'antd-mobile'
+import { useSearchParams, useNavigate } from 'react-router-dom'
+import { Popup, List } from 'antd-mobile'
 import { goodsList,test } from '@/api/order'
 
 const menus = lorem.map((item,index)=>({
@@ -22,6 +23,11 @@ export default function Order() {
   const [searchParams] = useSearchParams()
   const code = searchParams.get('code')
   const [list, setList] = useState([])
+  const navigate = useNavigate()
+  const [ selectedList, setSelectedList ] = useState([])
+  const [ selectedCount, setSelectedCount ] = useState(0)
+  const [ selectedVisible, setSelectedVisible ] = useState(false)
+  
 
   const init = async ()=> {
     const loginRes = await login({code})
@@ -34,9 +40,28 @@ export default function Order() {
     setList(res.list)
   }
 
-  const onScroll = (v) => {
+  const onMainScroll = (v) => {
     // console.log('onScroll---order')
     // console.log(v)
+  }
+
+  const onMainChange = v => {
+    const count=v.reduce((prev,cur)=>prev+cur.quantity,0)
+    setSelectedCount(count)
+    setSelectedList(v)
+  }
+  const goOrderList=()=>{
+    navigate('/orderList')
+  }
+
+  const showDetail=()=>{
+    console.log(1111)
+    console.log(selectedList)
+    setSelectedVisible(true)
+  }
+
+  const onMaskClick = ()=> {
+    setSelectedVisible(false)
   }
    
   useEffect(()=>{
@@ -50,15 +75,16 @@ export default function Order() {
       </div>
       <div className={style.content}>
         <div className={style.side}>
-          <Side items={list} ></Side>
+          <Side items={list}></Side>
         </div>
         <div className={style.main}>
-          <Main items={list} onScroll={onScroll}></Main>
+          <Main items={list} selected={selectedList} onScroll={onMainScroll} onChange={onMainChange}></Main>
         </div>
         <div className={style.bottom} >
-          <Bottom></Bottom>
+          <Bottom count={selectedCount} showDetail={showDetail} goOrderList={goOrderList}></Bottom>
         </div>
       </div>
+      <Selected items={selectedList} visible={selectedVisible} onChange={onMainChange} onMaskClick={onMaskClick} goOrderList={goOrderList} />
     </div>
   )
 }

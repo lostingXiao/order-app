@@ -1,0 +1,39 @@
+.content{
+  height: 100%;
+  overflow-y: scroll;
+  .title{
+    color: var(--adm-color-weak);
+    font-size: var(--adm-font-size-8);
+    padding: 0 20px;
+    height: 80px;
+    line-height: 80px;
+    box-sizing: border-box;
+  }
+  .list{
+    height: calc(100% - 180px);
+    overflow-y: scroll;
+  }
+  .handle{
+    height: 100px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div{
+      height: 80px;
+      line-height: 80px;
+      font-size: var(--adm-font-size-6);
+      color: var(--adm-color-primary);
+      padding: 0 20px;
+      border-radius: 40px 0 0 40px;
+      width: 40%;
+      text-align: center;
+      border: 1px solid var(--adm-color-primary);
+    }
+    .admin{
+      color: var(--adm-color-text-light-solid);
+      background-color:  var(--adm-color-primary);
+      border-radius: 0 40px 40px 0;
+    }
+  }
+}
