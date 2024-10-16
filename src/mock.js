@@ -1,6 +1,6 @@
 const lorem=[
   {
-    key:'111',
+    key:'11122222222',
     typeName:'第1种',
     items:()=>{
       return Array(20).fill({
