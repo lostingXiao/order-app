@@ -13,7 +13,9 @@ const menus = lorem.map((item,index)=>({
   goodsList:item.goodsList()
 })) 
 
-export default function Main({ items, onScroll }) {
+export default function Main({ items, onScroll, onChange }) {
+
+  const [ selectedList, setSelectedList ] = useState([])
   const [ itemList, setItemList ] = useState([])
   const mainElementRef = useRef(null)
   const { run: handleScroll } = useThrottleFn(
@@ -49,6 +51,10 @@ export default function Main({ items, onScroll }) {
     }
   }
 
+  const stepperChange = (index,idx,v) => {
+    console.log(index,idx,v)
+  }
+
 
   useEffect(() => {
     init()
@@ -56,7 +62,7 @@ export default function Main({ items, onScroll }) {
 
   return (
     <div key={1} className={style.container} ref={mainElementRef}>
-      {itemList.map(item => (
+      {itemList.map((item,index) => (
           <List key={item.goods_type_id} header={
             <div className={ style.title } id={`anchor-${item.goods_type_id}`}>{item.goods_type_name}</div>
           }>
@@ -74,7 +80,7 @@ export default function Main({ items, onScroll }) {
                     height={40}
                   />
                 }
-                extra={ <Stepper className={ style.stepper } min={0} digits={0} step={obj.min_quantity} /> }>
+                extra={ <Stepper className={ style.stepper } min={0} digits={0} step={obj.min_quantity} onChange={(v)=>stepperChange(index,idx,v)} /> }>
                 {obj.name}
               </List.Item>
             ))}

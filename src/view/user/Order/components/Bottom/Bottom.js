@@ -16,9 +16,7 @@ export default function Bottom() {
         <TruckOutline fontSize={32} color='var(--adm-color-primary)' />
       </Badge>
       </div>
-      <div className={style.right} onClick={goOrderList}>
-        下单
-      </div>
+      <div className={style.right} onClick={goOrderList}>下单</div>
     </div>
   )
 }

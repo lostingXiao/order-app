@@ -17,8 +17,6 @@ const menus = lorem.map((item,index)=>({
   goodsList:item.goodsList()
 })) 
 
-console.log(menus)
-
 export default function Order() {
   const { login } = useLogin()
   const [searchParams] = useSearchParams()
@@ -37,8 +35,8 @@ export default function Order() {
   }
 
   const onScroll = (v) => {
-    console.log('onScroll---order')
-    console.log(v)
+    // console.log('onScroll---order')
+    // console.log(v)
   }
    
   useEffect(()=>{
