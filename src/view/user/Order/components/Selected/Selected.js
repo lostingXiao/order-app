@@ -27,7 +27,7 @@ export default function Selected({ items, visible, onMaskClick, goOrderList, onC
           )):<Empty description='暂无数据' />}
         </List>
         <div className={style.handle}>
-          <div onClick={onMaskClick}>继续点餐</div>
+          <div onClick={onMaskClick}>继续点餐11</div>
           <div className={style.admin} onClick={goOrderList}>下单</div>
         </div>
       </div>
