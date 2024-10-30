@@ -6,8 +6,15 @@ export default function Side({ items }) {
   const [ itemList, setItemList ] = useState([])
 
   const init = () => {
-    const list = items.length ? items.map(item=>({goods_type_id: item.goods_type_id.toString(), goods_type_name: item.goods_type_name})) : []
-    const key = list.length ? list[0].goods_type_id :''
+    const list = Array.from(items.values()).map(item=>{
+      const typeQuantity  = Array.from(item.goodsList.values()).reduce((total,item)=>total+=item.quantity || 0,0)
+      return {typeQuantity, typeId: item.type_id, typeName: item.type_name}
+    })
+    console.log(list.length)
+    if(!list.length) return
+    console.log(list[0])
+    const key = list.length ? list[0].typeId.toString() :''
+    console.log(key)
     setActiveKey(key)
     setItemList(list)
   }
@@ -23,14 +30,11 @@ export default function Side({ items }) {
 
   return (
     <>
-    <SideBar
-      activeKey={activeKey}
-      onChange={onChange}
-    >
-      {itemList.map(item => (
-        <SideBar.Item key={item.goods_type_id} title={item.goods_type_name} />
-      ))}
-    </SideBar>
+      <SideBar activeKey={activeKey} onChange={onChange}>
+        {itemList.map(item => (
+          <SideBar.Item key={item.typeId} title={item.typeName} badge={item.typeQuantity || ''} />
+        ))}
+      </SideBar>
     </>
   )
 }

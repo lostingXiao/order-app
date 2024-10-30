@@ -4,6 +4,7 @@ const moduleName = 'common-'
 
 class Common {
   token = getStore(`${moduleName}token`) ||''
+  code = getStore(`${moduleName}code`) ||''
 
   constructor(){
     makeAutoObservable(this,{},{autoBind:true})
@@ -19,6 +20,7 @@ class Common {
   clearSates(){
     const statesArr=[
       { name:'token',value:'' },
+      { name:'code',value:'' },
     ]
     statesArr.forEach(item=>{
       this[item.name]=item.value

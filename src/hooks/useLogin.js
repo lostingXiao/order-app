@@ -14,6 +14,7 @@ export const useLogin = () => {
       const res = await loginApi({ password, username, code })
       const { token } = res
       setSates({token},true)
+      setSates({code},true)
       return true
     }catch(err){
       return false

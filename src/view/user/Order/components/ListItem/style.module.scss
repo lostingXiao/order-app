@@ -1,5 +1,8 @@
 .item{
   font-size: var(--adm-font-size-6);
+  .price{
+    color: var(--adm-color-primary);
+  }
 }
 .stepper{
   --height: 50px;

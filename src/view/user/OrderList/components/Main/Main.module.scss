@@ -1,10 +1,26 @@
 .container{
   height: 100%;
   overflow: auto;
+  background-color: var(--adm-color-fill-content);
+  .loading{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--adm-color-white);
+    font-size: var(--adm-font-size-8);
+  }
   .item{
-    padding-right: 40px;
     .itemExtraText{
       margin-right: 10px;
     }
+  }
+  .state{
+    color: var(--adm-color-primary);
+  }
+  .main{
+    color: var(--adm-color-primary);
+    font-size: var(--adm-font-size-10);
   }
 }

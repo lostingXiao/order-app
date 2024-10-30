@@ -1,20 +1,32 @@
 import request from '../utils/request'
-const http = '/api/app/order'
+import socket from '../utils/socket'
+const http = 'app/order'
 
-// 用户编辑
+// 商品列表
 export const goodsList=()=> {
   return request({
     url: http + '/goodsList',
     method: 'POST'
   })
 }
-
-export const test=()=> {
+// 创建订单
+export const createOrder=()=> {
   return request({
-    url: http + '/test',
-    method: 'GET'
+    url: http + '/createOrder',
+    method: 'POST'
   })
 }
+// 获取已下单订单列表
+export const orderList=()=> {
+  return request({
+    url: http + '/orderList',
+    method: 'POST'
+  })
+}
+
+
+
+
 
 
 

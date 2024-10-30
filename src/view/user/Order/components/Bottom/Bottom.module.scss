@@ -12,6 +12,13 @@
     background-color: var(--adm-color-text-light-solid);
     border-radius: 40px 0 0 40px;
     padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--adm-color-primary);
+    font-size: var(--adm-font-size-6);
+    .amount{
+      font-size: var(--adm-font-size-10);
+    }
   }
   
   .right{

@@ -1,15 +1,16 @@
-import React, { useEffect, useRef,useState } from 'react'
+import React from 'react'
 import style from './style.module.scss'
-import { Popup, List, Space, Button, Empty } from 'antd-mobile'
+import { Popup, List, Empty } from 'antd-mobile'
 import ListItem from '../ListItem/ListItem'
 
-export default function Selected({ items, visible, onMaskClick, goOrderList, onChange }) {
+export default function Selected({ items, quantity, amount, visible, onMaskClick, onOrder, onChange, onAddChange, onSubChange }) {
 
-
-  const onNumChange = (i,v)=>{
-    items[i].quantity=v
+  console.log(items)
+  const onNumChange = (num,data,f)=>{
     const list = items.filter(item=>item.quantity)
-    onChange(list)
+    if(f==='add') onAddChange && onAddChange(num,data,list)
+    else if(f==='sub') onSubChange && onSubChange(num,data,list)
+    else onChange && onChange(num,data,list)
   }
 
   return (
@@ -20,15 +21,18 @@ export default function Selected({ items, visible, onMaskClick, goOrderList, onC
       bodyStyle={{ width: '80vw' }}
     >
       <div className={style.content}>
-        <div className={style.title}>已点商品</div>
+        <div className={style.title}>
+          <span>已点商品 <span className={style.titleNum}>{quantity}</span></span>
+          <span className={style.titleNum}>￥{amount} </span>
+        </div>
         <List className={style.list}>
           {items.length?items.map((obj,idx)=>(
-            <ListItem key={obj.id} item={obj} onChange={(v)=>onNumChange(idx,v)} />
+            <ListItem key={obj.id} item={obj} onAddChange={(num,o)=>onNumChange(num,o,'add')} onSubChange={(num,o)=>onNumChange(num,o,'sub')} onChange={(num,o)=>onNumChange(num,o)} />
           )):<Empty description='暂无数据' />}
         </List>
         <div className={style.handle}>
-          <div onClick={onMaskClick}>继续点餐11</div>
-          <div className={style.admin} onClick={goOrderList}>下单</div>
+          <div onClick={onMaskClick}>继续点餐</div>
+          <div className={style.admin} onClick={onOrder}>下单</div>
         </div>
       </div>
     </Popup>

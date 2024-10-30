@@ -4,10 +4,12 @@ const postcssPx2Rem = require('postcss-pxtorem')
 module.exports = {
   // 服务器
   devServer:{
+    open: false,
     port: 3001,
     proxy: {
       '/api': {
         target: 'http://localhost:5050',
+        ws: true,
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

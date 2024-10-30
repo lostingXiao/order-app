@@ -1,5 +1,5 @@
 import request from '../utils/request'
-const http = '/api/public/app'
+const http = 'public/app'
 
 // 登录
 export const login=(data)=> {

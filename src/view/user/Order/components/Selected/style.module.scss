@@ -3,11 +3,17 @@
   overflow-y: scroll;
   .title{
     color: var(--adm-color-weak);
-    font-size: var(--adm-font-size-8);
+    font-size: var(--adm-font-size-7);
     padding: 0 20px;
     height: 80px;
-    line-height: 80px;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .titleNum{
+      color: var(--adm-color-primary);
+      font-size: var(--adm-font-size-10);
+    }
   }
   .list{
     height: calc(100% - 180px);

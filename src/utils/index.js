@@ -9,11 +9,11 @@ export function validatenull (val) {
     return false;
   }
   if (val instanceof Array) {
-    if (val.length == 0) return true;
+    if (val.length === 0) return true;
   } else if (val instanceof Object) {
     if (JSON.stringify(val) === '{}') return true;
   } else {
-    if (val == 'null' || val == null || val == 'undefined' || val == undefined || val == '') return true;
+    if (val === 'null' || val == null || val === 'undefined' || val === undefined || val === '') return true;
     return false;
   }
   return false;
@@ -31,4 +31,21 @@ export const uuid = () => {
   s[19] = hexDigits.substring(index, index+1)
   s[8] = s[13] = s[18] = s[23] = '-'
   return s.join('')
+}
+
+
+export const getHashParams = () => {
+  const hash = window.location.hash.substring(1) // 获取#后的内容，并移除#
+  const paramsString = hash.split('?')[1] || ''
+  const params = {}
+  if (paramsString.length) {
+    // 将查询字符串转换为对象
+    paramsString.split('&').forEach(pair => {
+      if (pair !== '') {
+        let [key, value] = pair.split('=')
+        params[decodeURIComponent(key)] = decodeURIComponent(value || '')
+      }
+    })
+  }
+  return params
 }

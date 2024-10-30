@@ -3,7 +3,7 @@ import style from './Bottom.module.scss'
 import { Grid } from 'antd-mobile'
 import { useNavigate } from "react-router-dom";
 
-export default function Bottom() {
+export default function Bottom({amount}) {
   const navigate = useNavigate();
   const goCheckout=()=>{
     navigate('/statement');
@@ -15,7 +15,7 @@ export default function Bottom() {
   return (
     <Grid columns={2} className={style.container}>
       <Grid.Item className={`${style.item} ${style.itemOutline}`} onClick={goCheckout}>
-        去算账
+        ￥{ amount } 买单
       </Grid.Item>
       <Grid.Item className={`${style.item} ${style.itemSolid}`} onClick={goOrder}>
         还要吃

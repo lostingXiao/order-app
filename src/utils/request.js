@@ -2,11 +2,12 @@ import axios from 'axios'
 import store from '../store'
 import { Toast } from 'antd-mobile'
 
-console.log(store)
-
 const { setSates } = store.common
 
+const baseURL=process.env.REACT_APP_BASE_URL
+
 const service = axios.create({
+  baseURL,
   withCredentials: false, // 携带cookie, 不支持跨域
   responseType: 'json',
   timeout: 30000 // request timeout
